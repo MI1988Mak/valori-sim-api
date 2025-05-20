@@ -42,12 +42,19 @@ def run_simulation(payload: SimulationPayload):
         else "Immobilie bringt mehr – bei mehr Stabilität"
     )
 
-    # Rückgabe im UTF-8-kompatiblen JSON
-    return JSONResponse(content={
+    # Antwortdaten
+    response_data = {
         "entscheidung": entscheidung,
         "kennzahlen": {
             "nachsteuer_etf": round(etf_nachsteuer, 2),
             "nachsteuer_immo": round(immo_nachsteuer, 2)
         },
         "eingabe": payload.dict()
-    }, media_type="application/json; charset=utf-8")
+    }
+
+    # Rückgabe mit UTF-8-Header
+    return JSONResponse(
+        content=response_data,
+        media_type="application/json; charset=utf-8",
+        headers={"Content-Type": "application/json; charset=utf-8"}
+    )
