@@ -1,6 +1,10 @@
 from fastapi import FastAPI
 from fastapi.responses import JSONResponse
 from pydantic import BaseModel
+import sys
+
+# Forciere UTF-8-Ausgabe
+sys.stdout.reconfigure(encoding='utf-8')
 
 app = FastAPI(title="VALORI Simulations-API")
 
