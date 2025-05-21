@@ -3,7 +3,7 @@ from fastapi.responses import JSONResponse
 from pydantic import BaseModel
 import sys
 
-# Forciere UTF-8-Ausgabe
+# Erzwinge UTF-8-Kodierung für Standardausgaben
 sys.stdout.reconfigure(encoding='utf-8')
 
 app = FastAPI(title="VALORI Simulations-API")
@@ -56,7 +56,7 @@ def run_simulation(payload: SimulationPayload):
         "eingabe": payload.dict()
     }
 
-    # Rückgabe mit UTF-8-Header
+    # Rückgabe mit explizitem UTF-8-Header
     return JSONResponse(
         content=response_data,
         media_type="application/json; charset=utf-8",
