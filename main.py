@@ -6,16 +6,16 @@ import sys
 sys.stdout.reconfigure(encoding='utf-8')
 app = FastAPI(title="VALORI Simulations-API")
 
-# 12 Simulationen: sim01–sim12
-class Sim01Parameter(BaseModel):
+
+class Sim01_Parameter(BaseModel):
     beispielwert: float = 100.0
 
-class Sim01Payload(BaseModel):
+class Sim01_Payload(BaseModel):
     sim_id: str
-    parameter: Sim01Parameter
+    parameter: Sim01_Parameter
 
 @app.post("/v1/run-sim01")
-def run_sim01(payload: Sim01Payload):
+def run_sim01(payload: Sim01_Payload):
     p = payload.parameter
     ergebnis_text = "Simulationsergebnis für sim01 – Beispielwert: " + str(p.beispielwert)
 
@@ -34,15 +34,16 @@ def run_sim01(payload: Sim01Payload):
         media_type="application/json; charset=utf-8",
         headers={"Content-Type": "application/json; charset=utf-8"}
     )
-class Sim02Parameter(BaseModel):
+
+class Sim02_Parameter(BaseModel):
     beispielwert: float = 100.0
 
-class Sim02Payload(BaseModel):
+class Sim02_Payload(BaseModel):
     sim_id: str
-    parameter: Sim02Parameter
+    parameter: Sim02_Parameter
 
 @app.post("/v1/run-sim02")
-def run_sim02(payload: Sim02Payload):
+def run_sim02(payload: Sim02_Payload):
     p = payload.parameter
     ergebnis_text = "Simulationsergebnis für sim02 – Beispielwert: " + str(p.beispielwert)
 
@@ -61,15 +62,16 @@ def run_sim02(payload: Sim02Payload):
         media_type="application/json; charset=utf-8",
         headers={"Content-Type": "application/json; charset=utf-8"}
     )
-class Sim03Parameter(BaseModel):
+
+class Sim03_Parameter(BaseModel):
     beispielwert: float = 100.0
 
-class Sim03Payload(BaseModel):
+class Sim03_Payload(BaseModel):
     sim_id: str
-    parameter: Sim03Parameter
+    parameter: Sim03_Parameter
 
 @app.post("/v1/run-sim03")
-def run_sim03(payload: Sim03Payload):
+def run_sim03(payload: Sim03_Payload):
     p = payload.parameter
     ergebnis_text = "Simulationsergebnis für sim03 – Beispielwert: " + str(p.beispielwert)
 
@@ -88,15 +90,16 @@ def run_sim03(payload: Sim03Payload):
         media_type="application/json; charset=utf-8",
         headers={"Content-Type": "application/json; charset=utf-8"}
     )
-class Sim04Parameter(BaseModel):
+
+class Sim04_Parameter(BaseModel):
     beispielwert: float = 100.0
 
-class Sim04Payload(BaseModel):
+class Sim04_Payload(BaseModel):
     sim_id: str
-    parameter: Sim04Parameter
+    parameter: Sim04_Parameter
 
 @app.post("/v1/run-sim04")
-def run_sim04(payload: Sim04Payload):
+def run_sim04(payload: Sim04_Payload):
     p = payload.parameter
     ergebnis_text = "Simulationsergebnis für sim04 – Beispielwert: " + str(p.beispielwert)
 
@@ -115,15 +118,16 @@ def run_sim04(payload: Sim04Payload):
         media_type="application/json; charset=utf-8",
         headers={"Content-Type": "application/json; charset=utf-8"}
     )
-class Sim05Parameter(BaseModel):
+
+class Sim05_Parameter(BaseModel):
     beispielwert: float = 100.0
 
-class Sim05Payload(BaseModel):
+class Sim05_Payload(BaseModel):
     sim_id: str
-    parameter: Sim05Parameter
+    parameter: Sim05_Parameter
 
 @app.post("/v1/run-sim05")
-def run_sim05(payload: Sim05Payload):
+def run_sim05(payload: Sim05_Payload):
     p = payload.parameter
     ergebnis_text = "Simulationsergebnis für sim05 – Beispielwert: " + str(p.beispielwert)
 
@@ -142,15 +146,16 @@ def run_sim05(payload: Sim05Payload):
         media_type="application/json; charset=utf-8",
         headers={"Content-Type": "application/json; charset=utf-8"}
     )
-class Sim06Parameter(BaseModel):
+
+class Sim06_Parameter(BaseModel):
     beispielwert: float = 100.0
 
-class Sim06Payload(BaseModel):
+class Sim06_Payload(BaseModel):
     sim_id: str
-    parameter: Sim06Parameter
+    parameter: Sim06_Parameter
 
 @app.post("/v1/run-sim06")
-def run_sim06(payload: Sim06Payload):
+def run_sim06(payload: Sim06_Payload):
     p = payload.parameter
     ergebnis_text = "Simulationsergebnis für sim06 – Beispielwert: " + str(p.beispielwert)
 
@@ -169,15 +174,16 @@ def run_sim06(payload: Sim06Payload):
         media_type="application/json; charset=utf-8",
         headers={"Content-Type": "application/json; charset=utf-8"}
     )
-class Sim07Parameter(BaseModel):
+
+class Sim07_Parameter(BaseModel):
     beispielwert: float = 100.0
 
-class Sim07Payload(BaseModel):
+class Sim07_Payload(BaseModel):
     sim_id: str
-    parameter: Sim07Parameter
+    parameter: Sim07_Parameter
 
 @app.post("/v1/run-sim07")
-def run_sim07(payload: Sim07Payload):
+def run_sim07(payload: Sim07_Payload):
     p = payload.parameter
     ergebnis_text = "Simulationsergebnis für sim07 – Beispielwert: " + str(p.beispielwert)
 
@@ -196,15 +202,16 @@ def run_sim07(payload: Sim07Payload):
         media_type="application/json; charset=utf-8",
         headers={"Content-Type": "application/json; charset=utf-8"}
     )
-class Sim08Parameter(BaseModel):
+
+class Sim08_Parameter(BaseModel):
     beispielwert: float = 100.0
 
-class Sim08Payload(BaseModel):
+class Sim08_Payload(BaseModel):
     sim_id: str
-    parameter: Sim08Parameter
+    parameter: Sim08_Parameter
 
 @app.post("/v1/run-sim08")
-def run_sim08(payload: Sim08Payload):
+def run_sim08(payload: Sim08_Payload):
     p = payload.parameter
     ergebnis_text = "Simulationsergebnis für sim08 – Beispielwert: " + str(p.beispielwert)
 
@@ -223,15 +230,16 @@ def run_sim08(payload: Sim08Payload):
         media_type="application/json; charset=utf-8",
         headers={"Content-Type": "application/json; charset=utf-8"}
     )
-class Sim09Parameter(BaseModel):
+
+class Sim09_Parameter(BaseModel):
     beispielwert: float = 100.0
 
-class Sim09Payload(BaseModel):
+class Sim09_Payload(BaseModel):
     sim_id: str
-    parameter: Sim09Parameter
+    parameter: Sim09_Parameter
 
 @app.post("/v1/run-sim09")
-def run_sim09(payload: Sim09Payload):
+def run_sim09(payload: Sim09_Payload):
     p = payload.parameter
     ergebnis_text = "Simulationsergebnis für sim09 – Beispielwert: " + str(p.beispielwert)
 
@@ -250,15 +258,16 @@ def run_sim09(payload: Sim09Payload):
         media_type="application/json; charset=utf-8",
         headers={"Content-Type": "application/json; charset=utf-8"}
     )
-class Sim10Parameter(BaseModel):
+
+class Sim10_Parameter(BaseModel):
     beispielwert: float = 100.0
 
-class Sim10Payload(BaseModel):
+class Sim10_Payload(BaseModel):
     sim_id: str
-    parameter: Sim10Parameter
+    parameter: Sim10_Parameter
 
 @app.post("/v1/run-sim10")
-def run_sim10(payload: Sim10Payload):
+def run_sim10(payload: Sim10_Payload):
     p = payload.parameter
     ergebnis_text = "Simulationsergebnis für sim10 – Beispielwert: " + str(p.beispielwert)
 
@@ -277,15 +286,16 @@ def run_sim10(payload: Sim10Payload):
         media_type="application/json; charset=utf-8",
         headers={"Content-Type": "application/json; charset=utf-8"}
     )
-class Sim11Parameter(BaseModel):
+
+class Sim11_Parameter(BaseModel):
     beispielwert: float = 100.0
 
-class Sim11Payload(BaseModel):
+class Sim11_Payload(BaseModel):
     sim_id: str
-    parameter: Sim11Parameter
+    parameter: Sim11_Parameter
 
 @app.post("/v1/run-sim11")
-def run_sim11(payload: Sim11Payload):
+def run_sim11(payload: Sim11_Payload):
     p = payload.parameter
     ergebnis_text = "Simulationsergebnis für sim11 – Beispielwert: " + str(p.beispielwert)
 
@@ -304,15 +314,16 @@ def run_sim11(payload: Sim11Payload):
         media_type="application/json; charset=utf-8",
         headers={"Content-Type": "application/json; charset=utf-8"}
     )
-class Sim12Parameter(BaseModel):
+
+class Sim12_Parameter(BaseModel):
     beispielwert: float = 100.0
 
-class Sim12Payload(BaseModel):
+class Sim12_Payload(BaseModel):
     sim_id: str
-    parameter: Sim12Parameter
+    parameter: Sim12_Parameter
 
 @app.post("/v1/run-sim12")
-def run_sim12(payload: Sim12Payload):
+def run_sim12(payload: Sim12_Payload):
     p = payload.parameter
     ergebnis_text = "Simulationsergebnis für sim12 – Beispielwert: " + str(p.beispielwert)
 
