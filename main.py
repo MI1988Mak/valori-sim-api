@@ -1,12 +1,20 @@
+Füge das in Main.py ein:
+
 from fastapi import FastAPI
 from fastapi.responses import JSONResponse
 from pydantic import BaseModel
 import sys
+from valori_datahub import (
+    get_etf_data,
+    get_real_estate_data,
+    get_inflation_data,
+    get_interest_data
+)
 
 sys.stdout.reconfigure(encoding='utf-8')
 app = FastAPI(title="VALORI Simulations-API")
 
-
+# Simulationen (sim01 bis sim12)
 class Sim01_Parameter(BaseModel):
     beispielwert: float = 100.0
 
@@ -18,7 +26,6 @@ class Sim01_Payload(BaseModel):
 def run_sim01(payload: Sim01_Payload):
     p = payload.parameter
     ergebnis_text = "Simulationsergebnis für sim01 – Beispielwert: " + str(p.beispielwert)
-
     return JSONResponse(
         content={
             "entscheidung": ergebnis_text,
@@ -46,7 +53,6 @@ class Sim02_Payload(BaseModel):
 def run_sim02(payload: Sim02_Payload):
     p = payload.parameter
     ergebnis_text = "Simulationsergebnis für sim02 – Beispielwert: " + str(p.beispielwert)
-
     return JSONResponse(
         content={
             "entscheidung": ergebnis_text,
@@ -74,7 +80,6 @@ class Sim03_Payload(BaseModel):
 def run_sim03(payload: Sim03_Payload):
     p = payload.parameter
     ergebnis_text = "Simulationsergebnis für sim03 – Beispielwert: " + str(p.beispielwert)
-
     return JSONResponse(
         content={
             "entscheidung": ergebnis_text,
@@ -102,7 +107,6 @@ class Sim04_Payload(BaseModel):
 def run_sim04(payload: Sim04_Payload):
     p = payload.parameter
     ergebnis_text = "Simulationsergebnis für sim04 – Beispielwert: " + str(p.beispielwert)
-
     return JSONResponse(
         content={
             "entscheidung": ergebnis_text,
@@ -130,7 +134,6 @@ class Sim05_Payload(BaseModel):
 def run_sim05(payload: Sim05_Payload):
     p = payload.parameter
     ergebnis_text = "Simulationsergebnis für sim05 – Beispielwert: " + str(p.beispielwert)
-
     return JSONResponse(
         content={
             "entscheidung": ergebnis_text,
@@ -158,7 +161,6 @@ class Sim06_Payload(BaseModel):
 def run_sim06(payload: Sim06_Payload):
     p = payload.parameter
     ergebnis_text = "Simulationsergebnis für sim06 – Beispielwert: " + str(p.beispielwert)
-
     return JSONResponse(
         content={
             "entscheidung": ergebnis_text,
@@ -186,7 +188,6 @@ class Sim07_Payload(BaseModel):
 def run_sim07(payload: Sim07_Payload):
     p = payload.parameter
     ergebnis_text = "Simulationsergebnis für sim07 – Beispielwert: " + str(p.beispielwert)
-
     return JSONResponse(
         content={
             "entscheidung": ergebnis_text,
@@ -214,7 +215,6 @@ class Sim08_Payload(BaseModel):
 def run_sim08(payload: Sim08_Payload):
     p = payload.parameter
     ergebnis_text = "Simulationsergebnis für sim08 – Beispielwert: " + str(p.beispielwert)
-
     return JSONResponse(
         content={
             "entscheidung": ergebnis_text,
@@ -242,7 +242,6 @@ class Sim09_Payload(BaseModel):
 def run_sim09(payload: Sim09_Payload):
     p = payload.parameter
     ergebnis_text = "Simulationsergebnis für sim09 – Beispielwert: " + str(p.beispielwert)
-
     return JSONResponse(
         content={
             "entscheidung": ergebnis_text,
@@ -270,7 +269,6 @@ class Sim10_Payload(BaseModel):
 def run_sim10(payload: Sim10_Payload):
     p = payload.parameter
     ergebnis_text = "Simulationsergebnis für sim10 – Beispielwert: " + str(p.beispielwert)
-
     return JSONResponse(
         content={
             "entscheidung": ergebnis_text,
@@ -298,7 +296,6 @@ class Sim11_Payload(BaseModel):
 def run_sim11(payload: Sim11_Payload):
     p = payload.parameter
     ergebnis_text = "Simulationsergebnis für sim11 – Beispielwert: " + str(p.beispielwert)
-
     return JSONResponse(
         content={
             "entscheidung": ergebnis_text,
@@ -326,7 +323,6 @@ class Sim12_Payload(BaseModel):
 def run_sim12(payload: Sim12_Payload):
     p = payload.parameter
     ergebnis_text = "Simulationsergebnis für sim12 – Beispielwert: " + str(p.beispielwert)
-
     return JSONResponse(
         content={
             "entscheidung": ergebnis_text,
@@ -342,3 +338,20 @@ def run_sim12(payload: Sim12_Payload):
         media_type="application/json; charset=utf-8",
         headers={"Content-Type": "application/json; charset=utf-8"}
     )
+
+# Live-Daten-Endpunkte
+@app.get("/v1/get-etf-data")
+def etf(symbol: str = "URTH"):
+    return get_etf_data(symbol)
+
+@app.get("/v1/get-real-estate")
+def real_estate(city: str = "Berlin"):
+    return get_real_estate_data(city)
+
+@app.get("/v1/get-inflation")
+def inflation():
+    return get_inflation_data()
+
+@app.get("/v1/get-interest")
+def interest():
+    return get_interest_data()
