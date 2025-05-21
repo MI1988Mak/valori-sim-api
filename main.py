@@ -2,6 +2,18 @@ from fastapi import FastAPI, HTTPException
 from fastapi.responses import JSONResponse
 from pydantic import BaseModel
 
+# Optional: Live-Datenmodul einbinden
+try:
+    from valori_datahub import (
+        get_etf_data,
+        get_real_estate_data,
+        get_inflation_data,
+        get_interest_data
+    )
+    live_data_available = True
+except ImportError:
+    live_data_available = False
+
 app = FastAPI(title="VALORI Simulations-API")
 
 # --- Generische Simulationsstruktur ---
@@ -39,10 +51,28 @@ for i in range(1, 13):
 
     app.post(sim_route)(sim_func)
 
-# Optionaler zentraler Router
+# Optionaler Router (nicht zwingend notwendig)
 @app.post("/v1/run-simulation")
 def run_simulation_router(payload: dict):
     sim_id = payload.get("sim_id")
     if sim_id and sim_id.startswith("sim") and sim_id[3:].isdigit():
         return generate_response(sim_id, GenericPayload(**payload).parameter)
     raise HTTPException(status_code=404, detail=f"Simulation '{sim_id}' nicht gefunden.")
+
+# --- Live-Daten-Endpunkte ---
+if live_data_available:
+    @app.get("/v1/get-etf-data")
+    def etf(symbol: str = "URTH"):
+        return get_etf_data(symbol)
+
+    @app.get("/v1/get-real-estate")
+    def real_estate(city: str = "Berlin"):
+        return get_real_estate_data(city)
+
+    @app.get("/v1/get-inflation")
+    def inflation():
+        return get_inflation_data()
+
+    @app.get("/v1/get-interest")
+    def interest():
+        return get_interest_data()
